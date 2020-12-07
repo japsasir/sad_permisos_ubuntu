@@ -64,7 +64,6 @@ echo "Estas son las sugerencias de los alumnos." > /home/asgbd/asignaturas/tecno
 
 # chmod 660= Owner y grupo asignado pueden leer y escribir.
 # chmod 664= Owner y grupo pueden leer y escribir. Otros pueden leer.
-# chmod 740= Owner tiene control total.
 # chmod 740= Owner tiene control total. Grupo puede leer.
 # chmod 720= Owner tiene control total. Grupo puede escribir.
 # chmod 770= Owner y grupo tienen control total.
@@ -81,7 +80,7 @@ chmod 770 -R /home/asgbd/asignaturas/tecnologia/profesor
 
 # Alumnos pueden leer apuntes sin modificar. Pueden crear sugerencias sin ver el resto.
 chmod 740 -R /home/asgbd/asignaturas/tecnologia/alumnos/apuntes
-chmod 700 -R /home/asgbd/asignaturas/tecnologia/alumnos/sugerencias
+chmod 720 -R /home/asgbd/asignaturas/tecnologia/alumnos/sugerencias
 
 ###-----Comprobación final.-----###
 
