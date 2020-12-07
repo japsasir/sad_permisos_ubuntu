@@ -52,6 +52,31 @@ echo "Estas son las sugerencias de los alumnos." > /home/asignaturas/tecnologia/
 
 ###-----Asignamos permisos a los directorios.-----###
 
+# Sintaxis: 'chgrp [opciones] nuevo_grupo nombre_de_objeto' Grupo asignado a carpeta.
+# Sintaxis: 'chmod Tipo de permiso Ruta_Archivo' Permisos a archivo o carpeta.
+
+# https://chmodcommand.com para obtener rápido los permisos de usuarios.
+# chmod 660= Owner y grupo asignado pueden leer y escribir.
+# chmod 664= Owner y grupo pueden leer y escribir. Otros pueden leer.
+
+# Asignaturas
+chgrp ALL /home/asignaturas
+chmod 664 /home/asignaturas
+
+# Tecnologia
+chgrp ALL /home/asignaturas/tecnologia
+chmod 664 /home/asignaturas/tecnologia
+
+# Profesor
+chown PTC 1 /home/asignaturas/tecnologia/profesor
+chmod 660 -R /home/asignaturas/tecnologia/profesor
+
+# Alumnos
+chgrp ALL /home/asignaturas/tecnologia/alumnos
+chmod 664 -R  
 
 
 ###-----Comprobación final.-----###
+
+ls -R /home/asignaturas
+
