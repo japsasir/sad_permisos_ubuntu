@@ -42,18 +42,18 @@ usermod -a -G ALL root
 ## Opcional: Comprobar que se ha aplicado correctamente con 'groups ATC1'
 
 ###-----Creamos los directorios. Introducimos un archivo de texto personalizado donde corresponde.-----###
-mkdir /home/asignaturas
-mkdir /home/asignaturas/tecnologia
-mkdir /home/asignaturas/tecnologia/profesor
-mkdir /home/asignaturas/tecnologia/profesor/notas
-echo "Estas son las notas de los alumnos." > /home/asignaturas/tecnologia/profesor/notas/Notas.txt
-mkdir /home/asignaturas/tecnologia/profesor/examenes
-echo "Estos son los examenes de los alumnos." > /home/asignaturas/tecnologia/profesor/examenes/Examen.txt
-mkdir /home/asignaturas/tecnologia/alumnos
-mkdir /home/asignaturas/tecnologia/alumnos/apuntes
-echo "Estos son los apuntes de los alumnos." > /home/asignaturas/tecnologia/alumnos/apuntes/Apuntes.txt
-mkdir /home/asignaturas/tecnologia/alumnos/sugerencias
-echo "Estas son las sugerencias de los alumnos." > /home/asignaturas/tecnologia/alumnos/sugerencias/Sugerencias.txt
+mkdir /home/asgbd/asignaturas
+mkdir /home/asgbd/asignaturas/tecnologia
+mkdir /home/asgbd/asignaturas/tecnologia/profesor
+mkdir /home/asgbd/asignaturas/tecnologia/profesor/notas
+echo "Estas son las notas de los alumnos." > /home/asgbd/asignaturas/tecnologia/profesor/notas/Notas.txt
+mkdir /home/asgbd/asignaturas/tecnologia/profesor/examenes
+echo "Estos son los examenes de los alumnos." > /home/asgbd/asignaturas/tecnologia/profesor/examenes/Examen.txt
+mkdir /home/asgbd/asignaturas/tecnologia/alumnos
+mkdir /home/asgbd/asignaturas/tecnologia/alumnos/apuntes
+echo "Estos son los apuntes de los alumnos." > /home/asgbd/asignaturas/tecnologia/alumnos/apuntes/Apuntes.txt
+mkdir /home/asgbd/asignaturas/tecnologia/alumnos/sugerencias
+echo "Estas son las sugerencias de los alumnos." > /home/asgbd/asignaturas/tecnologia/alumnos/sugerencias/Sugerencias.txt
 
 ###-----Asignamos permisos a los directorios.-----###
 
@@ -71,18 +71,18 @@ echo "Estas son las sugerencias de los alumnos." > /home/asignaturas/tecnologia/
 # chmod 777= Todos los permisos a todos los usuarios. ¡Peligro!
 
 # Asignaturas. Propietario PTC1, grupo ALL. 
-chown PTC1 -R /home/asignaturas
-chgrp ALL -R /home/asignaturas
-chmod 664 -R /home/asignaturas
+chown PTC1 -R /home/asgbd/asignaturas
+chgrp ALL -R /home/asgbd/asignaturas
+chmod 664 -R /home/asgbd/asignaturas
 
 # Profesor, dueño de las carpetas. Su carpeta es prueba de alumnos.
-chgrp PTC -R /home/asignaturas/tecnologia/profesor
-chmod 770 -R /home/asignaturas/tecnologia/profesor
+chgrp PTC -R /home/asgbd/asignaturas/tecnologia/profesor
+chmod 770 -R /home/asgbd/asignaturas/tecnologia/profesor
 
 # Alumnos pueden leer apuntes sin modificar. Pueden crear sugerencias sin ver el resto.
-chmod 740 -R /home/asignaturas/tecnologia/alumnos/apuntes
-chmod 700 -R /home/asignaturas/tecnologia/alumnos/sugerencias
+chmod 740 -R /home/asgbd/asignaturas/tecnologia/alumnos/apuntes
+chmod 700 -R /home/asgbd/asignaturas/tecnologia/alumnos/sugerencias
 
 ###-----Comprobación final.-----###
 
-ls -l -R /home/asignaturas
+ls -l -R /home/asgbd/asignaturas
