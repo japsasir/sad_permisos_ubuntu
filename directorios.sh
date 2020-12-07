@@ -33,7 +33,7 @@ usermod -a -G ALL ATC1
 usermod -a -G ALL ATC2
 usermod -a -G ALL ATC3
 usermod -a -G ALL PTC1
-
+usermod -a -G ALL root
 ## Opcional: Comprobar que se ha aplicado correctamente con 'groups ATC1'
 
 ###-----Creamos los directorios. Introducimos un archivo de texto personalizado donde corresponde.-----###
@@ -58,25 +58,23 @@ echo "Estas son las sugerencias de los alumnos." > /home/asignaturas/tecnologia/
 # https://chmodcommand.com para obtener rápido los permisos de usuarios.
 # chmod 660= Owner y grupo asignado pueden leer y escribir.
 # chmod 664= Owner y grupo pueden leer y escribir. Otros pueden leer.
-
+# chmod 700= Owner tiene control total. Nadie más toca nada. (Profesor)
+# Chmod 777= Todos los permisos a todos los usuarios.
 # Asignaturas
-chgrp ALL /home/asignaturas
-chmod 664 /home/asignaturas
+chgrp ALL -R /home/asignaturas
+chmod 664 -R /home/asignaturas
 
 # Tecnologia
-chgrp ALL /home/asignaturas/tecnologia
 chmod 664 /home/asignaturas/tecnologia
 
-# Profesor
-chown PTC 1 /home/asignaturas/tecnologia/profesor
-chmod 660 -R /home/asignaturas/tecnologia/profesor
+# Profesor, amo y señor de su carpeta a prueba de alumnos.
+chown PTC1 -R /home/asignaturas/tecnologia/profesor
+chmod 700 -R /home/asignaturas/tecnologia/profesor
 
 # Alumnos
 chgrp ALL /home/asignaturas/tecnologia/alumnos
-chmod 664 -R  
-
+chmod 777 -R
 
 ###-----Comprobación final.-----###
 
-ls -R /home/asignaturas
-
+ls -l -R /home/asignaturas
