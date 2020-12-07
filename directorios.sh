@@ -19,9 +19,14 @@ useradd -p practicas PTC1
 
 ## Creamos los grupos
 
-# Creamos el grupo ATC. Recordemos que PTC no tendrá grupo.
+# Creamos el grupo ATC, el grupo PTC y el grupo ALL. El grupo PTC se crea para cumplir con 'profesores y administradores'
+groupadd PTC
 groupadd ATC
 groupadd ALL
+
+# Añadimos los usuarios PTC y root al grupo PTC
+usermod -a -G PTC PTC1
+usermod -a -G PTC root
 
 # Añadimos los usuarios ATC1, ATC2, ATC3 al grupo ATC.
 usermod -a -G ATC ATC1
@@ -56,24 +61,27 @@ echo "Estas son las sugerencias de los alumnos." > /home/asignaturas/tecnologia/
 # Sintaxis: 'chmod Tipo de permiso Ruta_Archivo' Permisos a archivo o carpeta.
 
 # https://chmodcommand.com para obtener rápido los permisos de usuarios.
+
 # chmod 660= Owner y grupo asignado pueden leer y escribir.
 # chmod 664= Owner y grupo pueden leer y escribir. Otros pueden leer.
-# chmod 700= Owner tiene control total. Nadie más toca nada. (Profesor)
-# Chmod 777= Todos los permisos a todos los usuarios.
-# Asignaturas
+# chmod 740= Owner tiene control total.
+# chmod 740= Owner tiene control total. Grupo puede leer.
+# chmod 720= Owner tiene control total. Grupo puede escribir.
+# chmod 770= Owner y grupo tienen control total.
+# chmod 777= Todos los permisos a todos los usuarios. ¡Peligro!
+
+# Asignaturas. Propietario PTC1, grupo ALL. 
+chown PTC1 -R /home/asignaturas
 chgrp ALL -R /home/asignaturas
 chmod 664 -R /home/asignaturas
 
-# Tecnologia
-chmod 664 /home/asignaturas/tecnologia
+# Profesor, dueño de las carpetas. Su carpeta es prueba de alumnos.
+chgrp PTC -R /home/asignaturas/tecnologia/profesor
+chmod 770 -R /home/asignaturas/tecnologia/profesor
 
-# Profesor, amo y señor de su carpeta a prueba de alumnos.
-chown PTC1 -R /home/asignaturas/tecnologia/profesor
-chmod 700 -R /home/asignaturas/tecnologia/profesor
-
-# Alumnos
-chgrp ALL /home/asignaturas/tecnologia/alumnos
-chmod 777 -R
+# Alumnos pueden leer apuntes sin modificar. Pueden crear sugerencias sin ver el resto.
+chmod 740 -R /home/asignaturas/tecnologia/alumnos/apuntes
+chmod 700 -R /home/asignaturas/tecnologia/alumnos/sugerencias
 
 ###-----Comprobación final.-----###
 
