@@ -25,7 +25,7 @@ Ciclo: CFGS Administración de Sistemas Informáticos en Red
 	- Carpeta tecnología -SIN ACL USUARIO, añade user PTC y grupo ATC
 		- Carpeta profesor -ACL Administrtadores y PTC, todos derechos
 			- Carpetas 'Notas' y 'Examenes' ACL heredada  de profesor.
-		- Carpeta Alumnos-Administradores, PTC y ATC. Todos derchos.
+		- Carpeta Alumnos-Administradores, PTC y ATC. Todos derechos.
 			- Carpetas 'Apuntes' y 'Sugerencias'. ACL heredada
 ****Ficheros txt****
 - Notas>Notas.txt
